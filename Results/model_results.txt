@@ -1,0 +1,454 @@
+> summary(linear_model)
+
+Call:
+lm(formula = normalized_used_price ~ screen_size + rear_camera_mp + 
+    front_camera_mp + internal_memory + ram + days_used + release_year + 
+    device_brand + os + X4g + X5g, data = train_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.64264 -0.18277 -0.00378  0.18653  1.40458 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(>|t|)    
+(Intercept)             4.351e+01  1.197e+01   3.636 0.000283 ***
+screen_size             6.447e-02  1.971e-03  32.705  < 2e-16 ***
+rear_camera_mp          3.152e-02  2.079e-03  15.163  < 2e-16 ***
+front_camera_mp         2.730e-02  3.617e-03   7.547 6.29e-14 ***
+internal_memory         1.580e-03  1.317e-04  12.000  < 2e-16 ***
+ram                     5.190e-02  7.569e-03   6.856 8.98e-12 ***
+days_used              -1.552e-05  3.993e-05  -0.389 0.697573    
+release_year           -2.025e-02  5.935e-03  -3.413 0.000654 ***
+device_brandAlcatel    -1.975e-01  5.948e-02  -3.321 0.000911 ***
+device_brandApple       3.319e-01  3.154e-01   1.052 0.292729    
+device_brandAsus       -9.899e-04  6.003e-02  -0.016 0.986846    
+device_brandBlackBerry  1.596e-01  9.706e-02   1.645 0.100168    
+device_brandCelkon     -3.652e-01  8.441e-02  -4.326 1.58e-05 ***
+device_brandCoolpad    -9.887e-02  9.933e-02  -0.995 0.319636    
+device_brandGionee      5.205e-02  6.948e-02   0.749 0.453786    
+device_brandGoogle      1.523e-01  1.098e-01   1.387 0.165693    
+device_brandHonor      -1.197e-01  6.157e-02  -1.945 0.051926 .  
+device_brandHTC         4.021e-02  6.163e-02   0.653 0.514128    
+device_brandHuawei     -3.975e-02  5.571e-02  -0.713 0.475616    
+device_brandInfinix    -2.125e-01  1.474e-01  -1.442 0.149519    
+device_brandKarbonn    -2.382e-01  8.056e-02  -2.956 0.003146 ** 
+device_brandLava       -1.224e-01  8.247e-02  -1.484 0.137938    
+device_brandLenovo     -9.512e-02  5.702e-02  -1.668 0.095410 .  
+device_brandLG         -3.722e-02  5.707e-02  -0.652 0.514288    
+device_brandMeizu      -5.743e-02  7.002e-02  -0.820 0.412137    
+device_brandMicromax   -2.480e-01  6.056e-02  -4.094 4.37e-05 ***
+device_brandMicrosoft  -3.687e-02  1.107e-01  -0.333 0.739109    
+device_brandMotorola   -1.336e-01  6.226e-02  -2.146 0.031948 *  
+device_brandNokia       1.066e-01  6.597e-02   1.616 0.106256    
+device_brandOnePlus     5.912e-02  1.003e-01   0.589 0.555742    
+device_brandOppo        5.953e-02  6.080e-02   0.979 0.327621    
+device_brandOthers     -6.625e-02  5.266e-02  -1.258 0.208455    
+device_brandPanasonic  -5.594e-02  7.415e-02  -0.754 0.450699    
+device_brandRealme     -2.232e-01  7.794e-02  -2.864 0.004221 ** 
+device_brandSamsung    -2.032e-03  5.423e-02  -0.037 0.970111    
+device_brandSony       -7.048e-02  6.402e-02  -1.101 0.271086    
+device_brandSpice      -1.806e-01  8.049e-02  -2.243 0.024960 *  
+device_brandVivo       -6.833e-02  6.282e-02  -1.088 0.276868    
+device_brandXiaomi     -4.199e-02  6.089e-02  -0.690 0.490458    
+device_brandXOLO       -1.211e-01  7.229e-02  -1.676 0.093944 .  
+device_brandZTE        -1.062e-01  5.990e-02  -1.773 0.076339 .  
+osiOS                  -2.069e-01  3.161e-01  -0.655 0.512795    
+osOthers               -3.210e-01  3.948e-02  -8.131 6.79e-16 ***
+osWindows              -4.056e-02  5.645e-02  -0.719 0.472518    
+X4gyes                  2.073e-01  2.009e-02  10.314  < 2e-16 ***
+X5gyes                  1.575e-01  4.221e-02   3.733 0.000194 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.3064 on 2373 degrees of freedom
+Multiple R-squared:  0.7317,	Adjusted R-squared:  0.7266 
+F-statistic: 143.8 on 45 and 2373 DF,  p-value: < 2.2e-16
+
+> VIF_values <- vif(linear_model)
+> print(VIF_values)
+                      GVIF Df GVIF^(1/(2*Df))
+screen_size       1.449680  1        1.204027
+rear_camera_mp    2.054000  1        1.433178
+front_camera_mp   2.939575  1        1.714519
+internal_memory   1.693707  1        1.301425
+ram               2.152033  1        1.466981
+days_used         2.524159  1        1.588760
+release_year      4.730357  1        2.174938
+device_brand    158.854047 33        1.079813
+os               74.379515  3        2.050732
+X4g               2.278258  1        1.509390
+X5g               1.906331  1        1.380699
+
+> test_rmse_lm 
+[1] 0.3180222
+> test_mae_lm
+[1] 0.2383193
+
+
+> summary(reg_tree)
+Call:
+rpart(formula = normalized_used_price ~ ., data = train_data, 
+    method = "anova")
+  n= 2419 
+
+           CP nsplit rel error    xerror        xstd
+1  0.40868515      0 1.0000000 1.0019620 0.036190890
+2  0.12178385      1 0.5913148 0.6143381 0.022698234
+3  0.11118192      2 0.4695310 0.5068859 0.019032757
+4  0.03089672      3 0.3583491 0.3806030 0.014233833
+5  0.02533223      4 0.3274524 0.3363147 0.012220292
+6  0.02280435      5 0.3021201 0.3097160 0.011166706
+7  0.02024946      6 0.2793158 0.2973596 0.010383717
+8  0.01132420      7 0.2590663 0.2867051 0.010401388
+9  0.01052994      8 0.2477421 0.2756596 0.009852046
+10 0.01000000      9 0.2372122 0.2696120 0.009739178
+
+Variable importance
+normalized_new_price          screen_size              battery           price_tier       rear_camera_mp      internal_memory                  X4g 
+                  23                   16                   13                   13                    7                    5                    5 
+              weight         release_year            days_used      front_camera_mp                   os 
+                   4                    4                    3                    3                    2 
+
+Node number 1: 2419 observations,    complexity param=0.4086852
+  mean=4.366466, MSE=0.3431018 
+  left son=2 (916 obs) right son=3 (1503 obs)
+  Primary splits:
+      normalized_new_price < 5.024239 to the left,  improve=0.4086852, (0 missing)
+      screen_size          < 12.715   to the left,  improve=0.4052787, (0 missing)
+      price_tier           splits as  RL,           improve=0.3985114, (0 missing)
+      battery              < 2545     to the left,  improve=0.3838604, (0 missing)
+      internal_memory      < 48       to the left,  improve=0.3141634, (0 missing)
+  Surrogate splits:
+      price_tier     splits as  RL,           agree=0.882, adj=0.689, (0 split)
+      screen_size    < 10.3     to the left,  agree=0.741, adj=0.317, (0 split)
+      battery        < 2255     to the left,  agree=0.740, adj=0.313, (0 split)
+      X4g            splits as  LR,           agree=0.723, adj=0.267, (0 split)
+      rear_camera_mp < 5.75     to the left,  agree=0.715, adj=0.248, (0 split)
+
+Node number 2: 916 observations,    complexity param=0.1217838
+  mean=3.886802, MSE=0.2428804 
+  left son=4 (249 obs) right son=5 (667 obs)
+  Primary splits:
+      screen_size          < 10.185   to the left,  improve=0.4543187, (0 missing)
+      normalized_new_price < 4.287352 to the left,  improve=0.4222952, (0 missing)
+      battery              < 2125     to the left,  improve=0.3341923, (0 missing)
+      weight               < 124.2    to the left,  improve=0.2766291, (0 missing)
+      X4g                  splits as  LR,           improve=0.2409720, (0 missing)
+  Surrogate splits:
+      battery              < 1792.5   to the left,  agree=0.903, adj=0.643, (0 split)
+      weight               < 124.2    to the left,  agree=0.862, adj=0.494, (0 split)
+      normalized_new_price < 4.256605 to the left,  agree=0.841, adj=0.414, (0 split)
+      os                   splits as  R-LR,         agree=0.807, adj=0.289, (0 split)
+      rear_camera_mp       < 4.075    to the left,  agree=0.799, adj=0.261, (0 split)
+
+Node number 3: 1503 observations,    complexity param=0.1111819
+  mean=4.658797, MSE=0.1785038 
+  left son=6 (900 obs) right son=7 (603 obs)
+  Primary splits:
+      internal_memory      < 48       to the left,  improve=0.3439432, (0 missing)
+      normalized_new_price < 5.920567 to the left,  improve=0.2830972, (0 missing)
+      screen_size          < 12.865   to the left,  improve=0.2817865, (0 missing)
+      release_year         < 2017.5   to the left,  improve=0.2618236, (0 missing)
+      battery              < 3245     to the left,  improve=0.2599685, (0 missing)
+  Surrogate splits:
+      release_year    < 2016.5   to the left,  agree=0.867, adj=0.668, (0 split)
+      front_camera_mp < 6.05     to the left,  agree=0.840, adj=0.602, (0 split)
+      days_used       < 537.5    to the right, agree=0.829, adj=0.574, (0 split)
+      screen_size     < 12.89    to the left,  agree=0.768, adj=0.421, (0 split)
+      battery         < 3245     to the left,  agree=0.743, adj=0.360, (0 split)
+
+Node number 4: 249 observations,    complexity param=0.03089672
+  mean=3.343126, MSE=0.2144293 
+  left son=8 (59 obs) right son=9 (190 obs)
+  Primary splits:
+      normalized_new_price < 3.907513 to the left,  improve=0.4802728, (0 missing)
+      screen_size          < 10.12    to the left,  improve=0.1698582, (0 missing)
+      weight               < 90.75    to the left,  improve=0.1534113, (0 missing)
+      device_brand         splits as  RL-RRL-R--RR-RRRR-LRRR-RRR-RRR--RR, improve=0.1173257, (0 missing)
+      battery              < 900      to the left,  improve=0.1024662, (0 missing)
+  Surrogate splits:
+      weight         < 89.1     to the left,  agree=0.807, adj=0.186, (0 split)
+      screen_size    < 5.255    to the left,  agree=0.795, adj=0.136, (0 split)
+      device_brand   splits as  RR-RRL-R--RR-RRRR-RRRR-RRR-RRR--RR, agree=0.783, adj=0.085, (0 split)
+      days_used      < 333      to the left,  agree=0.783, adj=0.085, (0 split)
+      rear_camera_mp < 0.8      to the left,  agree=0.779, adj=0.068, (0 split)
+
+Node number 5: 667 observations,    complexity param=0.02024946
+  mean=4.089763, MSE=0.1019632 
+  left son=10 (374 obs) right son=11 (293 obs)
+  Primary splits:
+      screen_size     < 12.725   to the left,  improve=0.2471172, (0 missing)
+      rear_camera_mp  < 10.25    to the left,  improve=0.2462039, (0 missing)
+      battery         < 2175     to the left,  improve=0.2411454, (0 missing)
+      front_camera_mp < 6.5      to the left,  improve=0.2031659, (0 missing)
+      internal_memory < 48       to the left,  improve=0.1594255, (0 missing)
+  Surrogate splits:
+      battery        < 2810     to the left,  agree=0.874, adj=0.713, (0 split)
+      release_year   < 2017.5   to the left,  agree=0.786, adj=0.512, (0 split)
+      weight         < 163.4    to the left,  agree=0.784, adj=0.509, (0 split)
+      days_used      < 537      to the right, agree=0.751, adj=0.433, (0 split)
+      rear_camera_mp < 10.25    to the left,  agree=0.727, adj=0.379, (0 split)
+
+Node number 6: 900 observations,    complexity param=0.02533223
+  mean=4.45598, MSE=0.1154203 
+  left son=12 (352 obs) right son=13 (548 obs)
+  Primary splits:
+      screen_size          < 12.715   to the left,  improve=0.2023987, (0 missing)
+      battery              < 2545     to the left,  improve=0.2006768, (0 missing)
+      normalized_new_price < 5.447379 to the left,  improve=0.1684957, (0 missing)
+      weight               < 201      to the left,  improve=0.1548997, (0 missing)
+      price_tier           splits as  RL,           improve=0.1050157, (0 missing)
+  Surrogate splits:
+      battery      < 2510     to the left,  agree=0.861, adj=0.645, (0 split)
+      weight       < 149.25   to the left,  agree=0.797, adj=0.480, (0 split)
+      release_year < 2014.5   to the left,  agree=0.660, adj=0.131, (0 split)
+      device_brand splits as  RLRRL-RLRRLR-LLRRRLRRR-RLR-RRRRLLR, agree=0.649, adj=0.102, (0 split)
+      X4g          splits as  LR, agree=0.634, adj=0.065, (0 split)
+
+Node number 7: 603 observations,    complexity param=0.02280435
+  mean=4.961509, MSE=0.1196285 
+  left son=14 (466 obs) right son=15 (137 obs)
+  Primary splits:
+      normalized_new_price < 6.217584 to the left,  improve=0.2623762, (0 missing)
+      internal_memory      < 192      to the left,  improve=0.1935114, (0 missing)
+      ram                  < 7        to the left,  improve=0.1694870, (0 missing)
+      X5g                  splits as  LR,           improve=0.1342724, (0 missing)
+      screen_size          < 15.33    to the left,  improve=0.1281024, (0 missing)
+  Surrogate splits:
+      internal_memory < 192      to the left,  agree=0.816, adj=0.190, (0 split)
+      ram             < 10       to the left,  agree=0.796, adj=0.102, (0 split)
+      device_brand    splits as  --RLL-LLLLLL---LLLL-LLRLLLLLL-LL-L, agree=0.793, adj=0.088, (0 split)
+      os              splits as  LRLR, agree=0.791, adj=0.080, (0 split)
+      screen_size     < 25.515   to the left,  agree=0.783, adj=0.044, (0 split)
+
+Node number 8: 59 observations
+  mean=2.76724, MSE=0.1828046 
+
+Node number 9: 190 observations
+  mean=3.521954, MSE=0.08928559 
+
+Node number 10: 374 observations
+  mean=3.949265, MSE=0.07168295 
+
+Node number 11: 293 observations
+  mean=4.269102, MSE=0.08325508 
+
+Node number 12: 352 observations,    complexity param=0.0113242
+  mean=4.265274, MSE=0.1080636 
+  left son=24 (198 obs) right son=25 (154 obs)
+  Primary splits:
+      rear_camera_mp       < 11       to the left,  improve=0.2470839, (0 missing)
+      normalized_new_price < 5.443218 to the left,  improve=0.1530788, (0 missing)
+      price_tier           splits as  RL,           improve=0.1265453, (0 missing)
+      front_camera_mp      < 2.05     to the left,  improve=0.1262626, (0 missing)
+      battery              < 2270     to the left,  improve=0.1015910, (0 missing)
+  Surrogate splits:
+      front_camera_mp < 3.5      to the left,  agree=0.784, adj=0.506, (0 split)
+      screen_size     < 12.295   to the left,  agree=0.719, adj=0.357, (0 split)
+      battery         < 2175     to the left,  agree=0.716, adj=0.351, (0 split)
+      release_year    < 2014.5   to the left,  agree=0.673, adj=0.253, (0 split)
+      device_brand    splits as  LLLLR-LL-LLL-RLRLRRLLL-LLR-LRLRRLR, agree=0.645, adj=0.188, (0 split)
+
+Node number 13: 548 observations,    complexity param=0.01052994
+  mean=4.578477, MSE=0.08177928 
+  left son=26 (472 obs) right son=27 (76 obs)
+  Primary splits:
+      weight               < 409.5    to the left,  improve=0.19501190, (0 missing)
+      screen_size          < 20.41    to the left,  improve=0.18746360, (0 missing)
+      normalized_new_price < 5.37     to the left,  improve=0.14880290, (0 missing)
+      battery              < 5885     to the left,  improve=0.12293210, (0 missing)
+      price_tier           splits as  RL,           improve=0.07441647, (0 missing)
+  Surrogate splits:
+      screen_size          < 20.485   to the left,  agree=0.978, adj=0.842, (0 split)
+      battery              < 5446.5   to the left,  agree=0.938, adj=0.553, (0 split)
+      normalized_new_price < 6.429105 to the left,  agree=0.865, adj=0.026, (0 split)
+      ram                  < 1.5      to the right, agree=0.863, adj=0.013, (0 split)
+
+Node number 14: 466 observations
+  mean=4.865448, MSE=0.06540379 
+
+Node number 15: 137 observations
+  mean=5.288256, MSE=0.1659202 
+
+Node number 24: 198 observations
+  mean=4.121165, MSE=0.08356061 
+
+Node number 25: 154 observations
+  mean=4.450556, MSE=0.07853706 
+
+Node number 26: 472 observations
+  mean=4.527803, MSE=0.06655305 
+
+Node number 27: 76 observations
+  mean=4.893191, MSE=0.06134923 
+> test_rmse_tree
+[1] 0.2913292
+> # Test MAE
+> test_mae_tree <- mean(abs(tree_predictions - test_data$normalized_used_price))
+> test_mae_tree
+[1] 0.2251387
+> pruned_tree$variable.importance
+normalized_new_price          screen_size              battery           price_tier       rear_camera_mp      internal_memory                  X4g 
+          425.804220           300.185635           238.103810           233.658545           127.947251            95.868864            92.096988 
+              weight         release_year            days_used      front_camera_mp                   os         device_brand                  ram 
+           82.090424            75.402636            62.406078            60.310155            30.746502             7.751113             2.049116 
+
+
+
+> summary(model_tree)
+
+=== Summary ===
+
+Correlation coefficient                  0.9292
+Mean absolute error                      0.1704
+Root mean squared error                  0.2165
+Relative absolute error                 37.9046 %
+Root relative squared error             36.9651 %
+Total Number of Instances             2419    
+
+
+
+> test_rmse_tree
+[1] 0.2362555
+> test_mae_tree
+[1] 0.1865219
+
+
+
+> summary(class_tree)
+Call:
+rpart(formula = price_tier ~ screen_size + rear_camera_mp + front_camera_mp + 
+    internal_memory + ram + battery + weight + release_year + 
+    days_used + device_brand + os + X4g + X5g, data = train_data, 
+    method = "class")
+  n= 2419 
+
+          CP nsplit rel error    xerror       xstd
+1 0.41965029      0 1.0000000 1.0616153 0.02044594
+2 0.05745212      1 0.5803497 0.5928393 0.01866362
+3 0.04995837      2 0.5228976 0.5353872 0.01809114
+4 0.02997502      3 0.4729392 0.4771024 0.01741134
+5 0.01748543      4 0.4429642 0.4554538 0.01713112
+6 0.01000000      5 0.4254788 0.4271440 0.01674014
+
+Variable importance
+ rear_camera_mp         battery front_camera_mp     screen_size    release_year             X4g             ram          weight    device_brand 
+             18              17              14              14              11              10               5               5               3 
+      days_used internal_memory 
+              2               1 
+
+Node number 1: 2419 observations,    complexity param=0.4196503
+  predicted class=High  expected loss=0.4964862  P(node) =1
+    class counts:  1218  1201
+   probabilities: 0.504 0.496 
+  left son=2 (1227 obs) right son=3 (1192 obs)
+  Primary splits:
+      rear_camera_mp  < 8.05    to the right, improve=217.1023, (0 missing)
+      screen_size     < 12.715  to the right, improve=211.5064, (0 missing)
+      internal_memory < 48      to the right, improve=206.2408, (0 missing)
+      battery         < 2545    to the right, improve=205.9004, (0 missing)
+      X4g             splits as  RL,          improve=188.2387, (0 missing)
+  Surrogate splits:
+      front_camera_mp < 2.15    to the right, agree=0.814, adj=0.623, (0 split)
+      X4g             splits as  RL,          agree=0.758, adj=0.509, (0 split)
+      battery         < 2517.5  to the right, agree=0.743, adj=0.479, (0 split)
+      release_year    < 2015.5  to the right, agree=0.740, adj=0.472, (0 split)
+      screen_size     < 12.715  to the right, agree=0.736, adj=0.465, (0 split)
+
+Node number 2: 1227 observations,    complexity param=0.04995837
+  predicted class=High  expected loss=0.2876936  P(node) =0.5072344
+    class counts:   874   353
+   probabilities: 0.712 0.288 
+  left son=4 (1153 obs) right son=5 (74 obs)
+  Primary splits:
+      ram             < 3.5     to the right, improve=60.09645, (0 missing)
+      device_brand    splits as  LRLLR-RLLRLLRRRRRRRRRRLLLRRLL-LRRR, improve=47.93407, (0 missing)
+      internal_memory < 48      to the right, improve=33.89890, (0 missing)
+      rear_camera_mp  < 15.25   to the right, improve=17.60933, (0 missing)
+      X5g             splits as  RL, improve=15.30903, (0 missing)
+  Surrogate splits:
+      device_brand splits as  LLLLL-LLLLLLRLLLLLLLLLLLLLLLL-LLLL, agree=0.942, adj=0.041, (0 split)
+
+Node number 3: 1192 observations,    complexity param=0.05745212
+  predicted class=Low   expected loss=0.2885906  P(node) =0.4927656
+    class counts:   344   848
+   probabilities: 0.289 0.711 
+  left son=6 (339 obs) right son=7 (853 obs)
+  Primary splits:
+      battery         < 3035    to the right, improve=92.92724, (0 missing)
+      weight          < 159.975 to the right, improve=85.53643, (0 missing)
+      screen_size     < 12.725  to the right, improve=85.36761, (0 missing)
+      internal_memory < 48      to the right, improve=67.30925, (0 missing)
+      device_brand    splits as  LRLLLRRRLLLL-RRRLRRRRR-LRR-LLRRRRR, improve=55.13790, (0 missing)
+  Surrogate splits:
+      screen_size     < 15.255  to the right, agree=0.912, adj=0.690, (0 split)
+      weight          < 177.5   to the right, agree=0.875, adj=0.560, (0 split)
+      release_year    < 2016.5  to the right, agree=0.795, adj=0.280, (0 split)
+      front_camera_mp < 6       to the right, agree=0.794, adj=0.277, (0 split)
+      days_used       < 540.5   to the left,  agree=0.792, adj=0.268, (0 split)
+
+Node number 4: 1153 observations
+  predicted class=High  expected loss=0.2480486  P(node) =0.4766432
+    class counts:   867   286
+   probabilities: 0.752 0.248 
+
+Node number 5: 74 observations
+  predicted class=Low   expected loss=0.09459459  P(node) =0.03059115
+    class counts:     7    67
+   probabilities: 0.095 0.905 
+
+Node number 6: 339 observations,    complexity param=0.02997502
+  predicted class=High  expected loss=0.3982301  P(node) =0.1401406
+    class counts:   204   135
+   probabilities: 0.602 0.398 
+  left son=12 (181 obs) right son=13 (158 obs)
+  Primary splits:
+      device_brand    splits as  RRLLL--RLLLL---RLRR--R-LRR-LLRRRRR, improve=27.53494, (0 missing)
+      internal_memory < 48      to the right, improve=21.66093, (0 missing)
+      ram             < 3.5     to the right, improve=15.52642, (0 missing)
+      X4g             splits as  RL, improve=12.97562, (0 missing)
+      battery         < 5112    to the right, improve=10.63260, (0 missing)
+  Surrogate splits:
+      X4g             splits as  RL,          agree=0.655, adj=0.259, (0 split)
+      weight          < 160.5   to the right, agree=0.619, adj=0.184, (0 split)
+      screen_size     < 12.805  to the right, agree=0.617, adj=0.177, (0 split)
+      battery         < 3595    to the right, agree=0.602, adj=0.146, (0 split)
+      front_camera_mp < 6       to the right, agree=0.593, adj=0.127, (0 split)
+
+Node number 7: 853 observations
+  predicted class=Low   expected loss=0.1641266  P(node) =0.3526251
+    class counts:   140   713
+   probabilities: 0.164 0.836 
+
+Node number 12: 181 observations
+  predicted class=High  expected loss=0.2099448  P(node) =0.07482431
+    class counts:   143    38
+   probabilities: 0.790 0.210 
+
+Node number 13: 158 observations,    complexity param=0.01748543
+  predicted class=Low   expected loss=0.3860759  P(node) =0.06531625
+    class counts:    61    97
+   probabilities: 0.386 0.614 
+  left son=26 (31 obs) right son=27 (127 obs)
+  Primary splits:
+      internal_memory < 48      to the right, improve=15.802980, (0 missing)
+      ram             < 5       to the right, improve= 8.912340, (0 missing)
+      front_camera_mp < 6.5     to the right, improve= 6.568068, (0 missing)
+      device_brand    splits as  LL-----L-------L-RR--L--LL---RRRRR, improve= 5.678876, (0 missing)
+      battery         < 4410    to the right, improve= 5.646194, (0 missing)
+  Surrogate splits:
+      front_camera_mp < 6.5     to the right, agree=0.911, adj=0.548, (0 split)
+      ram             < 5       to the right, agree=0.873, adj=0.355, (0 split)
+      days_used       < 523.5   to the left,  agree=0.861, adj=0.290, (0 split)
+      release_year    < 2018.5  to the right, agree=0.835, adj=0.161, (0 split)
+      device_brand    splits as  RR-----R-------R-RR--L--RR---RRRRR, agree=0.829, adj=0.129, (0 split)
+
+Node number 26: 31 observations
+  predicted class=High  expected loss=0.1612903  P(node) =0.01281521
+    class counts:    26     5
+   probabilities: 0.839 0.161 
+
+Node number 27: 127 observations
+  predicted class=Low   expected loss=0.2755906  P(node) =0.05250103
+    class counts:    35    92
+   probabilities: 0.276 0.724 
